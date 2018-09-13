@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Comments from './Comments'
+import NewComment from './NewComment'
 
 class App extends Component {
 
@@ -11,27 +13,21 @@ class App extends Component {
     ]
   }
 
-  sendComment = () => {
-    this.setState({
-      comments: [...this.state.comments, 'Comentário']
+  //obs: Apesar da aplicação ter sido toda componentizada,
+  //o gerenciamento do estado ficou no componente Pai, 
+  //onde faz mais sentido... deixando para os componentes
+  //filhos trabalhares com eventos e renderização da tela.
+  sendComment = (newComment) => {
+    this.setState({     
+      comments: [...this.state.comments, newComment]
     })
   }
 
   render() {
     return (
       <div>
-        {/* NewComment */}
-        <div>
-            <textarea></textarea>
-            <button onClick={this.sendComment}>Enviar</button>
-        </div>   
-        { /* Comments */}     
-        <div>
-            { /* Comment */}
-            { this.state.comments.map((itemComment) => {
-                return <div key={itemComment}>{itemComment}</div>
-            })}
-        </div>
+        <NewComment sendComment={this.sendComment} />
+        <Comments comments={this.state.comments} />
       </div>
     );
   }
