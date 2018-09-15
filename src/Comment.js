@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Comment = ({cmt}) => {
+
+    const comment = cmt.comment || ''
     
     return(
-        <div>Comentário: { cmt.comment }</div>
+        <div>Comentário: { comment }</div>
     )
 }
 
