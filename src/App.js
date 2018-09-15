@@ -14,10 +14,21 @@ class App extends Component {
   //o gerenciamento do estado ficou no componente Pai, 
   //onde faz mais sentido... deixando para os componentes
   //filhos trabalhares com eventos e renderização da tela.
-  sendComment = (newComment) => {
-    this.setState({     
-      comments: [...this.state.comments, newComment]
-    })
+  sendComment = (comment) => {
+
+    const id = database.ref().child('comments').push().key
+
+    const comments = {}
+
+    comments['/comments/'+id] = {
+      comment
+    }
+
+    database.ref().update(comments)
+
+    // this.setState({     
+    //   comments: [...this.state.comments, newComment]
+    // })
   }
 
   componentDidMount(){
