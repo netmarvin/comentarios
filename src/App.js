@@ -47,6 +47,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h3>{process.env.REACT_APP_NAME}</h3>
+        <hr />
         <NewComment sendComment={this.sendComment} />
         <Comments comments={this.state.comments} />
         {
