@@ -1,17 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Comment from './Comment'
 
-class Comments extends Component {
+//refactor: de Stateful Components para Stateless Components...
+//reference: https://code.tutsplus.com/tutorials/stateful-vs-stateless-functional-components-in-react--cms-29541
 
-    render(){
-        const keys = Object.keys(this.props.comments)
-        return(
-            <div>
-                { keys.map( (key) => <Comment key={key} cmt={this.props.comments[key]} />)}
-            </div>
-        )
-    }
+const Comments = ({comments}) => {
+    
+    const keys = Object.keys(comments)
+    
+    return(
+        <div>
+            { keys.map( (key) => <Comment key={key} cmt={comments[key]} />)}
+        </div>
+    )
     
 }
 
 export default Comments
+
+

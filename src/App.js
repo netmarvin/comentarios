@@ -50,7 +50,7 @@ class App extends Component {
         <NewComment sendComment={this.sendComment} />
         <Comments comments={this.state.comments} />
         {
-          this.state.isLoading && <p>Carregando...</p>
+          this.state.isLoading && <h3>Carregando...</h3>
         }
       </div>
     );
